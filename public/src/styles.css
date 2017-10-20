@@ -1,0 +1,12 @@
+@import '~normalize.css/normalize.css';
+@import './assets/css/skeleton.min.css';
+
+.column, .columns{
+  min-height: 1px;
+}
+
+.brand {
+  height: 10vh;
+  width: auto;
+  vertical-align: middle;
+}

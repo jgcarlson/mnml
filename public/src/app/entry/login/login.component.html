@@ -1,0 +1,11 @@
+<form #login="ngForm" (submit)="loginUser()">
+  <div class="input-group">
+    <label>Email:</label>
+    <input type="text" name="email" [(ngModel)]="user.email" minlength="6" required>
+  </div>
+  <div class="input-group">
+    <label>Password:</label>
+    <input type="password" name="password" [(ngModel)]="user.password" minlength="8" required>
+  </div>
+  <button type="submit" [disabled]="!login.valid">Login</button>
+</form>

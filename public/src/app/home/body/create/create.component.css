@@ -1,0 +1,14 @@
+.note {
+  width: 50vw;
+  min-width: 300px;
+  margin: auto;
+}
+
+.input {
+  border: 2px solid lightgrey;
+}
+
+[contenteditable='true']:empty:not(:focus):before {
+  content: attr(data-text);
+  color: charcoal;
+}

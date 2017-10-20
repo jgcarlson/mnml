@@ -1,0 +1,12 @@
+<form #register="ngForm" (submit)="createUser()">
+  <fieldset>
+    <legend>Sign Up</legend>
+    <label>Email:</label>
+    <input type="text" class="u-full-width" name="email" [(ngModel)]="user.email" minlength="6" required>
+    <label>Password:</label>
+    <input type="password" class="u-full-width" name="password" [(ngModel)]="user.password" minlength="8" required>
+    <label>Confirm password:</label>
+    <input type="password" class="u-full-width" name="confirm" minlength="8" [(ngModel)]="user.confirm" required>
+    <button type="submit" class="u-full-width" [disabled]="user.password != user.confirm || !register.valid">Create Account</button>
+  </fieldset>
+</form>

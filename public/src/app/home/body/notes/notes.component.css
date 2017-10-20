@@ -1,0 +1,15 @@
+#note-container {
+  width: 90vw;
+  min-width: 300px;
+  margin: auto;
+  border: 1px solid red;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.note {
+  width: 20vw;
+  height: 20vh;
+  border: 1px solid green;
+}

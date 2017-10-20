@@ -1,0 +1,17 @@
+#login {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+}
+
+app-login {
+  vertical-align: middle;
+}
+
+#motto {
+  margin-top: 30%;
+}
+
+#words {
+  font-weight: bold;
+}

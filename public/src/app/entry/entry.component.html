@@ -1,0 +1,23 @@
+<div class="container">
+  <section id="login">
+    <div [@visibilityChanged]="isVisible">
+      <img class="brand" src="./../assets/images/logo-medium.png" alt="mnml-logo">
+    </div>
+    <app-login></app-login>
+  </section>
+  <section id="register">
+    <div class="row">
+      <div class="three columns"></div>
+      <div class="three columns">
+        <app-register></app-register>
+      </div>
+      <div class="six columns">
+        <h1 id="motto">
+          <div class="regular">The</div>
+          <div id="words">{{ word }}</div>
+          <div class="regular">notes app.</div>
+        </h1>
+      </div>
+    </div>
+  </section>
+</div>
