@@ -12,3 +12,7 @@
   content: attr(data-text);
   color: charcoal;
 }
+
+button {
+  display: flex;
+}

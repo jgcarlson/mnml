@@ -3,7 +3,8 @@
     <div name="title" class="title input" [(ngModel)]="note.title" contenteditable="true" data-text="Note Title">{{ title }}</div>
   </h4>
 
-  <div name="content" class="content input" (input)="note.content" [value]="content" contenteditable="true" data-text="Enter text here"></div>
+  <div name="content" class="content input" [(ngModel)]="note.content" contenteditable="true" data-text="Enter text here">{{ content }}</div>
+  <button (click)="updateNote()" class="button-primary">Submit</button>
 </div>
 
 {{ note | json }}

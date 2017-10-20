@@ -7,19 +7,29 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const UserSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    trim: true,
-    match: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-    unique: true
+const UserSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      trim: true,
+      match: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+      unique: true
+    },
+    password: {
+      type: String,
+      trim: true
+    },
+    notes: [
+      {
+        type: ObjectId,
+        ref: 'Note'
+      }
+    ]
   },
-  password: {
-    type: String,
-    trim: true
-  }
-}, {timestamps: true});
+  { timestamps: true }
+);
 
 UserSchema.pre('save', function(next) {
   bcrypt.genSalt(10, (err, salt) => {
@@ -31,21 +41,27 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.methods.comparePassword = function(password, hash) {
-  bcrypt.compare(password, hash)
-  .then(data => {return data})
-  .catch(data => console.log('Error in compare hash: ', err))
+  bcrypt
+    .compare(password, hash)
+    .then(data => {
+      return data;
+    })
+    .catch(data => console.log('Error in compare hash: ', err));
 };
 
 UserSchema.methods.generateJwt = function() {
   var expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
 
-  return jwt.sign({
-    _id: this._id,
-    email: this.email,
-    name: this.name,
-    exp: parseInt(expiry.getTime() / 1000),
-  }, 'KEEPITSECRET.KEEPITSAFE.'); // DO NOT KEEP YOUR SECRET IN THE CODE!
+  return jwt.sign(
+    {
+      _id: this._id,
+      email: this.email,
+      name: this.name,
+      exp: parseInt(expiry.getTime() / 1000)
+    },
+    'KEEPITSECRET.KEEPITSAFE.'
+  ); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
 mongoose.model('User', UserSchema);

@@ -12,12 +12,20 @@ export class CreateComponent implements OnInit, OnDestroy {
   constructor(private _noteService:NoteService) { }
 
   ngOnInit() {
+    console.log(this.token)
   }
+
+  token:any = localStorage.getItem('user');
 
   note:Note = new Note();
 
   updateNote() {
-    this._noteService.updateNote(this.note);
+    console.log('token: ' + this.token)
+    if (this.note.content == '') return false;
+    this.note.owner = this.token;
+    this._noteService.updateNote(this.note)
+    .then(data => console.log(data))
+    .catch(data => console.log('Login-catch data:', data));
   }
 
   ngOnDestroy() {
