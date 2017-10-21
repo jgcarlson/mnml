@@ -24,7 +24,8 @@ const UserSchema = new mongoose.Schema(
     notes: [
       {
         type: ObjectId,
-        ref: 'Note'
+        ref: 'Note',
+        unique: true
       }
     ]
   },
