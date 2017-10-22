@@ -13,7 +13,6 @@ export class CreateComponent implements OnInit, OnDestroy {
   constructor(private _noteService:NoteService, private _authService:AuthService) { }
 
   ngOnInit() {
-    console.log(this.token)
   }
 
   token:any = this._authService.getToken();
